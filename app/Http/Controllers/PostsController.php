@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use Session;
+use Auth;
 
 class PostsController extends Controller
 {
@@ -55,7 +56,7 @@ class PostsController extends Controller
         */
         $this->validate($request,[
             'title'=> 'required|max:255',
-            'author' => 'required',
+            // 'author' => 'required',
             'image' => 'required|image',
             'content' => 'required',
             'category_id' => 'required'
@@ -66,14 +67,15 @@ class PostsController extends Controller
         $featured = $request->image;
         $featured_new_name = time().$featured->getClientOriginalName();
         $featured->move('uploads/posts', $featured_new_name);
-
+        $user_id = Auth::id();
+        
         $post = Post::create([
             'title' => $request->title,
-            'author' => $request->author,
             'image' => 'uploads/posts/'.$featured_new_name,
             'content' => $request->content,
             'category_id' => $request->category_id,
-            'slug' => str_slug($request->title)
+            'slug' => str_slug($request->title),
+            'user_id' => $user_id
         ]);
 
         $post->tags()->attach($request->tags);

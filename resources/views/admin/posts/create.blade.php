@@ -23,10 +23,6 @@
                     <input type="text" id="title" name="title" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="author">Author</label>
-                    <input type="text" id="author" name="author" class="form-control">
-                </div>
-                <div class="form-group">
                     <label for="image">Featured Image</label>
                     <input type="file" id="image" name="image" class="form-control">
                 </div>

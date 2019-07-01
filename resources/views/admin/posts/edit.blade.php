@@ -23,10 +23,6 @@
                     <input type="text" id="title" name="title" value="{{$post->title}}" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="author">Author</label>
-                    <input type="text" id="author" name="author" value="{{$post->author}}" class="form-control">
-                </div>
-                <div class="form-group">
                     <label for="image">Featured Image</label>
                     <input type="file" id="image" name="image" value="{{$post->image}}" class="form-control">
                 </div>

@@ -41,7 +41,7 @@
 
                                         <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="#">{{$latest_post->category->name}}</a>
+                                        <a href="{{route('category.single', $latest_post->category->id)}}">{{$latest_post->category->name}}</a>
                                         </span>
 
                                         <span class="post__comments">
@@ -95,7 +95,7 @@
 
                                         <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="#">{{$second_post->category->name}}</a>
+                                            <a href="{{route('category.single', $second_post->category->id)}}">{{$second_post->category->name}}</a>
                                         </span>
 
                                         <span class="post__comments">
@@ -145,7 +145,7 @@
 
                                         <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="#">{{$third_post->category->name}}</a>
+                                            <a href="{{route('category.single', $third_post->category->id)}}">{{$third_post->category->name}}</a>
                                         </span>
 
                                         <span class="post__comments">
@@ -203,95 +203,6 @@
                         <div class="padded-50"></div>
                     </div>
                 @endforeach
-                
-                {{-- <div class="padded-50"></div>
-                <div class="offers">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                            <div class="heading">
-                                <h4 class="h1 heading-title">Laravel 5.3</h4>
-                                <div class="heading-line">
-                                    <span class="short-line"></span>
-                                    <span class="long-line"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="case-item-wrap">
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                <div class="case-item">
-                                    <div class="case-item__thumb">
-                                        <img src="{{asset('app/img/2.png')}}" alt="our case">
-                                    </div>
-                                    <h6 class="case-item__title"><a href="#">Investigationes demonstraverunt legere</a></h6>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                <div class="case-item">
-                                    <div class="case-item__thumb">
-                                        <img src="{{asset('app/img/3.jpg')}}" alt="our case">
-                                    </div>
-                                    <h6 class="text-center case-item__title">Claritas est etiam processus dynamicus</h6>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                <div class="case-item">
-                                    <div class="case-item__thumb mouseover poster-3d lightbox shadow animation-disabled" data-offset="5">
-                                        <img src="{{asset('app/img/4.jpg')}}" alt="our case">
-                                    </div>
-                                    <h6 class="case-item__title">quod mazim placerat facer possim assum</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="padded-50"></div>
-                <div class="offers">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                            <div class="heading">
-                                <h4 class="h1 heading-title">Laravel 5.3</h4>
-                                <div class="heading-line">
-                                    <span class="short-line"></span>
-                                    <span class="long-line"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="case-item-wrap">
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                <div class="case-item">
-                                    <div class="case-item__thumb">
-                                        <img src="{{asset('app/img/5.jpg')}}" alt="our case">
-                                    </div>
-                                    <h6 class="case-item__title"><a href="#">Investigationes demonstraverunt legere</a></h6>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                <div class="case-item">
-                                    <div class="case-item__thumb">
-                                        <img src="{{asset('app/img/2.png')}}" alt="our case">
-                                    </div>
-                                    <h6 class="case-item__title">Claritas est etiam processus dynamicus</h6>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                <div class="case-item">
-                                    <div class="case-item__thumb mouseover poster-3d lightbox shadow animation-disabled" data-offset="5">
-                                        <img src="{{asset('app/img/6.jpg')}}" alt="our case">
-                                    </div>
-                                    <h6 class="case-item__title">quod mazim placerat facer possim assum</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
                 
             </div>
             </div>
@@ -379,8 +290,8 @@
     <div class="container">
         <div class="row">
             <div class="form_search-wrap">
-                <form>
-                    <input class="overlay_search-input" placeholder="Type and hit Enter..." type="text">
+                <form method="get" action="/results">
+                    <input class="overlay_search-input" name="query" placeholder="Type and hit Enter..." type="text">
                     <a href="#" class="overlay_search-close">
                         <span></span>
                         <span></span>

@@ -18,15 +18,35 @@ Route::get('/', [
     'as' => 'index'
 ]);
 
-Route::get('/{slug}',[
-    'uses' => 'FrontEndController@single',
-    'as' => 'post.single'
-]);
+
 
 Auth::routes();
 
 Route::get('/test',function(){
     return App\User::find(6)->profile;
+});
+Route::get('/post/{slug}',[
+    'uses' => 'FrontEndController@single',
+    'as' => 'post.single'
+]);
+
+Route::get('/category/{id}',[
+    'uses' => 'FrontEndController@category',
+    'as' => 'category.single'
+]);
+
+Route::get('/tag/{id}',[
+    'uses' => 'FrontEndController@tag',
+    'as' => 'category.tag'
+]);
+
+Route::get('/results', function(){
+    $posts = \App\Post::where('title', 'like', '%' . request('query') . '%')->get();
+
+    return view('results')->with('posts', $posts)
+                            ->with('title', $posts->title)
+                            ->with('categories', Category::take(5)->get()) //take() is query builder method
+                            ->with('settings', Setting::first());
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
